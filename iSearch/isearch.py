@@ -215,9 +215,9 @@ def search_online(word, printer=True):
     url = 'http://dict.youdao.com/w/ %s' % word
 
     expl = get_text(url)
-
-    if printer:
-        colorful_print(expl)
+    normal_print(expl)
+#    if printer:
+#        colorful_print(expl)
     return expl
 
 
