@@ -213,7 +213,6 @@ def search_online(word, printer=True):
     # search the word or phrase on http://dict.youdao.com.
 
     url = 'http://dict.youdao.com/w/ %s' % word
-
     expl = get_text(url)
     normal_print(expl)
 #    if printer:
