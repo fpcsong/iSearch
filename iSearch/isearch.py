@@ -1,13 +1,15 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function, unicode_literals
-import sys
+
 import argparse
 import os
 import re
 import sqlite3
 import sys
-import requests
+
 import bs4
+import requests
+from colors import white,yellow,black,red,green,blue,blink
 from termcolor import colored
 
 # Default database path is ~/.iSearch.
@@ -182,20 +184,24 @@ def colorful_print(raw):
         if line:
             if colorful:
                 colorful = False
-                print(colored(line, 'white', 'on_green')+'\n')
+                print(white(line,bg='green') +'\n')
+#                print(colored(line, 'white', 'on_green')+'\n')
                 continue
             elif line.startswith('例'):
                 print(line+'\n')
                 continue
             elif line.startswith('【'):
-                print(colored(line, 'white', 'on_green')+'\n')
+                print(white(line, bg='green') + '\n')
+#                print(colored(line, 'white', 'on_green')+'\n')
                 detail = True
                 continue
 
             if not detail:
-                print(colored(line+'\n', 'yellow'))
+                print(yellow(line+'\n'))
+#                print(colored(line+'\n', 'yellow'))
             else:
-                print(colored(line, 'cyan')+'\n')
+                print(blink(line) +'\n')
+#                print(colored(line, 'cyan')+'\n')
 
 
 def normal_print(raw):
@@ -214,12 +220,12 @@ def search_online(word, printer=True):
 
     url = 'http://dict.youdao.com/w/ %s' % word
     expl = get_text(url)
-    normal_print(expl)
-#    if printer:
-#        colorful_print(expl)
+#    normal_print(expl)
+    if printer:
+        colorful_print(expl)
     return expl
 
-'''
+
 def search_database(word):
 
     # for offline search.
@@ -480,7 +486,7 @@ def count_word(arg):
     conn.close()
 
 
-'''
+
 
 def main():
     parser = argparse.ArgumentParser(description='Search words')
