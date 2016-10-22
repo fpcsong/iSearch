@@ -219,7 +219,7 @@ def search_online(word, printer=True):
 #        colorful_print(expl)
     return expl
 
-
+'''
 def search_database(word):
 
     # for offline search.
@@ -480,7 +480,7 @@ def count_word(arg):
     conn.close()
 
 
-
+'''
 
 def main():
     parser = argparse.ArgumentParser(description='Search words')
